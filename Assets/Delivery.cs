@@ -6,9 +6,11 @@ using Debug = UnityEngine.Debug;
 
 public class Delivery : MonoBehaviour
 {
+    bool hasPackage;
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Hi, I'm a collision!");
+        Debug.Log("Ouch!");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -16,10 +18,13 @@ public class Delivery : MonoBehaviour
         if (other.tag == "Package")
         {
             Debug.Log("Package picked up");
+            hasPackage = true;
         }
-        else
+
+        if (other.tag == "Customer" && hasPackage)
         {
-            Debug.Log("Package delivered to the customer!");
+            Debug.Log("Package delivered!");
+            hasPackage = false;
         }
     }
 }
