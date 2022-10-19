@@ -16,17 +16,17 @@ public class Delivery : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    private void Start()
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Ouch!");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Package" && !hasPackage)
         {
